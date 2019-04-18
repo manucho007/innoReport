@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from "../../core/firestore.service";
 import { Report } from "../../interfaces/report";
 import { text } from '@angular/core/src/render3';
+
+
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  selector: 'report-create',
+  templateUrl: './report-create.component.html',
+  styleUrls: ['./report-create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class ReportCreateComponent implements OnInit {
+
   report:Report={
     title: "",
     description:""
@@ -23,4 +26,5 @@ export class CreateComponent implements OnInit {
     this.report.title="";
     this.report.description="";
   }
+
 }

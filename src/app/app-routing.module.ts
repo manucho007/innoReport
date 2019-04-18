@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateComponent } from './report/create/create.component';
-import { ListComponent } from './report/list/list.component';
-import { ViewComponent } from './report/view/view.component';
+import { ReportCreateComponent } from './report/report-create/report-create.component';
+import { ReportListComponent } from './report/report-list/report-list.component';
+import { ReportViewComponent } from './report/report-view/report-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AngularFirestore } from "@angular/fire/firestore";
+import { HomeComponent } from './navigation/home/home.component';
+
 const routes: Routes = [
-  { path: '', component: ListComponent },
-  { path: 'create', component: CreateComponent },
-  { path: 'list', component: ListComponent },
-  { path: 'view', component: ViewComponent },
+  { path: '', component: HomeComponent },
+  { path: 'report-create', component: ReportCreateComponent },
+  { path: 'report-list', component: ReportListComponent },
+  { path: 'report-view', component: ReportViewComponent },
 ];
 
 @NgModule({
@@ -23,6 +24,6 @@ const routes: Routes = [
   ],
   providers:[AngularFirestore],
   exports: [RouterModule],
-  declarations: [CreateComponent, ListComponent, ViewComponent]
+  declarations: [ReportCreateComponent, ReportListComponent, ReportViewComponent, HomeComponent]
 })
 export class AppRoutingModule { }
