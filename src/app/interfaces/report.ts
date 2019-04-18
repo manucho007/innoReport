@@ -1,6 +1,6 @@
 export interface Report {
     title: string,
-    description: Text,
-    imagePath: string,
-    tags: []
+    description: string,
+    imagePath?: string,
+    tags?: []
 }
