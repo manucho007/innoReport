@@ -6,9 +6,10 @@ import { ReportListComponent } from './report/report-list/report-list.component'
 import { ReportViewComponent } from './report/report-view/report-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { HomeComponent } from './navigation/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: ReportListComponent },
+  { path: '', component: HomeComponent },
   { path: 'report-create', component: ReportCreateComponent },
   { path: 'report-list', component: ReportListComponent },
   { path: 'report-view', component: ReportViewComponent },
@@ -23,6 +24,6 @@ const routes: Routes = [
   ],
   providers:[AngularFirestore],
   exports: [RouterModule],
-  declarations: [ReportCreateComponent, ReportListComponent, ReportViewComponent]
+  declarations: [ReportCreateComponent, ReportListComponent, ReportViewComponent, HomeComponent]
 })
 export class AppRoutingModule { }
