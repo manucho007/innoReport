@@ -8,7 +8,7 @@ import { User } from "../../interfaces/user";
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
