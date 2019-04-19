@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { ReportCreateComponent } from './report/report-create/report-create.component';
 import { ReportListComponent } from './report/report-list/report-list.component';
 import { ReportViewComponent } from './report/report-view/report-view.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFirestore } from "@angular/fire/firestore";
 import { HomeComponent } from './navigation/home/home.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component'
 
+import { AngularFirestore} from "@angular/fire/firestore";
+import { AngularFireAuth} from "@angular/fire/auth";
+
+import { AuthGuard } from './core/auth.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'report-create', component: ReportCreateComponent },
-  { path: 'report-list', component: ReportListComponent },
-  { path: 'report-view', component: ReportViewComponent },
+  { path: 'login', component: UserLoginComponent },
+  { path: 'report-create', component: ReportCreateComponent,canActivate:[AuthGuard] },
+  { path: 'report-list', component: ReportListComponent,canActivate:[AuthGuard] },
+  { path: 'report-view', component: ReportViewComponent,canActivate:[AuthGuard] },
 ];
 
 @NgModule({
@@ -22,8 +29,18 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers:[AngularFirestore],
+  providers:[
+    AngularFirestore,
+    AuthGuard,
+    AngularFireAuth
+  ],
   exports: [RouterModule],
-  declarations: [ReportCreateComponent, ReportListComponent, ReportViewComponent, HomeComponent]
+  declarations: [
+    ReportCreateComponent, 
+    ReportListComponent, 
+    ReportViewComponent, 
+    HomeComponent,
+    UserLoginComponent
+  ]
 })
 export class AppRoutingModule { }
