@@ -1,0 +1,22 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
+</div>
+<!-- User NOT logged in -->
+<ng-template #guest>
+  <div class="container">
+    <h3>Welcome</h3>
+    <p class="card-text">Please Login</p>
+    <button class="button" routerLink="/login">Login</button>
+  </div>
+</ng-template>
+
+<ng-template #authenticated>
+  <div *ngIf="auth.user | async as user">
+    <h2>
+      {{user.displayName}}
+    </h2>
+    <img 
+    style="height: 100px ;display: block"    
+    [src]="user.photoURL || 'https://t4.ftcdn.net/jpg/01/18/03/35/160_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'" alt="">
+  </div>
+</ng-template>
