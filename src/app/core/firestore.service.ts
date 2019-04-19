@@ -63,7 +63,7 @@ export class FirestoreService {
       updatedAt: this.timestamp
     })
   }
-  // custom set method
+  // custom set method with manual ID
   set<T>(ref: DocPredicate<T>, data: any) {
     const timestamp = this.timestamp
     return this.doc(ref).set({
@@ -72,7 +72,7 @@ export class FirestoreService {
       createdAt: timestamp
     })
   }
-  // Custom add Method
+  // Custom add Method with automatically generated ID
   add<T>(ref: CollectionPredicate<T>, data) {
     const timestamp = this.timestamp
     return this.col(ref).add({

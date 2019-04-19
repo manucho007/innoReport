@@ -1,0 +1,19 @@
+<div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+
+    <h3>Please login</h3>
+  
+      <button (click)="signInWithGoogle()" class="btn btn-danger">
+        <i class="fa fa-google fa-lg"></i>  Google Login
+      </button>
+    
+  </div>
+  
+  
+  
+  
+  <ng-template #alreadyLoggedIn>
+    <p class="text-success">
+      Login Succesful
+    </p>
+  </ng-template>
+  

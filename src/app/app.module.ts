@@ -10,11 +10,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule} from '@angular/fire';
 import {environment} from'../environments/environment';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
+import { UserProfileComponent } from "./user/user-profile/user-profile.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserProfileComponent
   ],
   imports: [
     FormsModule,
