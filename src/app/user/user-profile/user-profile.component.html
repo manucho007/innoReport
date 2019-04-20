@@ -1,6 +1,9 @@
-<div *ngIf="auth.user | async; then authenticated else guest">
-  <!-- template will replace this div -->
+<div class="container">
+  <div *ngIf="auth.user | async; then authenticated else guest">
+    <!-- template will replace this div -->
+  </div>
 </div>
+
 <!-- User NOT logged in -->
 <ng-template #guest>
   <div class="container">
@@ -10,13 +13,18 @@
   </div>
 </ng-template>
 
+
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <h2>
-      {{user.displayName}}
-    </h2>
-    <img 
-    style="height: 100px ;display: block"    
-    [src]="user.photoURL || 'https://t4.ftcdn.net/jpg/01/18/03/35/160_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'" alt="">
+    <div class="d-flex align-items-center user">
+      <img 
+        class="rounded-circle user-photo"
+        height="50"
+        width="50"
+        [src]="user.photoURL || 'https://t4.ftcdn.net/jpg/01/18/03/35/160_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'" 
+        alt="">
+      <h4 class="name">{{user.displayName}}</h4>
+    </div>
   </div>
 </ng-template>
+
