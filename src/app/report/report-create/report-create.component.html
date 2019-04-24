@@ -1,39 +1,36 @@
-
 <div class="container">
-  <h1>New Request</h1>
-  <form>
-    <fieldset>
-      <div class="form-group">
-        <label class="col-form-label" for="title">Title of the request </label>
-        <input type="text" name="title" class="form-control" placeholder="Write a title for the request" id="title"
-          [(ngModel)]="report.title">
-      
-      
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea name="description" class="form-control" id="description" rows="3"
-          [(ngModel)]="report.description"></textarea>
+<h1>New Request</h1>
+<form>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-form-label" for="title">Title of the request </label>
+      <input type="text" name="title" class="form-control" placeholder="Write a title for the request" id="title"
+        [(ngModel)]="report.title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description" class="form-control" id="description" rows="3"
+        [(ngModel)]="report.description"></textarea>
+    </div>
+    <div class="form-group">
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
+        <label class="custom-control-label" for="customRadio1">City residents well being</label>
       </div>
-      <div class="form-group">
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-          <label class="custom-control-label" for="customRadio1">City residents well being</label>
-        </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio2">Health</label>
-        </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio3">Government</label>
-        </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio4">Education</label>
-        </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio2">Health</label>
       </div>
-
-          <div class="form-group">
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio3">Government</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio4">Education</label>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="exampleInputFile">Upload an Image</label>
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"
         (change)="uploadFile($event.target.files)">
@@ -50,9 +47,9 @@
       </div>
     </div>
 
-      <button type="button" class="btn btn-primary" (click)="createRequest()">Create</button>
-    </fieldset>
-  </form>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="createRequest()">Create</button>
+  </fieldset>
+</form>
 </div>
-
-
