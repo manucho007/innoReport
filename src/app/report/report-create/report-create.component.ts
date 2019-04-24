@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from "../../core/firestore.service";
 import { Report } from "../../interfaces/report";
-import { text } from '@angular/core/src/render3';
+import { AngularFireStorage, AngularFireUploadTask } from "@angular/fire/storage";
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
-
+let imagePathDB;
 @Component({
   selector: 'report-create',
   templateUrl: './report-create.component.html',
@@ -11,20 +13,58 @@ import { text } from '@angular/core/src/render3';
 })
 export class ReportCreateComponent implements OnInit {
 
-  report:Report={
+  // task: AngularFireUploadTask;
+  percentageUpload: Observable<number>;
+  imageDownloadURL: Observable<string>;
+  report: Report = {
     title: "",
-    description:""
+    description: "",
+    imagePath:"",
+    status: false
   }
-  constructor(private db: FirestoreService) { }
+  constructor(
+    private db: FirestoreService,
+    private storage: AngularFireStorage
+  ) { }
 
   ngOnInit() {
-
   }
 
-  createRequest(){
-    this.db.add('requests',this.report);
-    this.report.title="";
-    this.report.description="";
+  uploadFile(event) {
+    // The File object
+    const file = event.item(0)
+    // Client-side validation example
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return;
+    }
+    // The storage path
+    imagePathDB = `reports/${new Date().getTime()}_${file.name}`;
+    // The task
+    const task = this.storage.upload(imagePathDB, file)
+    
+    // observe percentage changes
+    this.percentageUpload = task.percentageChanges();
+    console.log(imagePathDB);
+    
+    // The ref
+    const ref = this.storage.ref(imagePathDB);
+    // // The file's download URL
+    // this.imageDownloadURL = ref.getDownloadURL();
+    task.snapshotChanges().pipe(
+      finalize(() => this.imageDownloadURL = ref.getDownloadURL() )
+   )
+  .subscribe()
+  }
+
+  createRequest() {
+    this.report.imagePath = imagePathDB;
+    console.log(this.report);
+    
+    this.db.add('requests', this.report);
+    this.report.title = "";
+    this.report.description = "";
+
   }
 
 }

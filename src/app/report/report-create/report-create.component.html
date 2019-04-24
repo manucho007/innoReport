@@ -7,7 +7,7 @@
         <label class="col-form-label" for="title">Title of the request </label>
         <input type="text" name="title" class="form-control" placeholder="Write a title for the request" id="title"
           [(ngModel)]="report.title">
-      </div>
+      
       
       <div class="form-group">
         <label for="description">Description</label>
@@ -33,11 +33,23 @@
         </div>
       </div>
 
-      <div class="form-group">
-          <label for="exampleInputFile">Upload an Image</label>
-          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">Upload any image that might help resolve this issue faster</small>
-        </div>
+          <div class="form-group">
+      <label for="exampleInputFile">Upload an Image</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"
+        (change)="uploadFile($event.target.files)">
+      <small id="fileHelp" class="form-text text-muted">Upload any image that might help resolve this issue
+        faster</small>
+    </div>
+
+    <div class="container"  *ngIf="percentageUpload | async as pct">
+      <h4>Uploading image</h4>{{pct | number}}
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar bg-success" role="progressbar"
+          [attr.aria-valuenow]="pct" aria-valuemin="0" aria-valuemax="100" [style.width]="pct + '%'"></div>
+        
+      </div>
+    </div>
+
       <button type="button" class="btn btn-primary" (click)="createRequest()">Create</button>
     </fieldset>
   </form>
