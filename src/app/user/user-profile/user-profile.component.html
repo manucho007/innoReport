@@ -12,9 +12,9 @@
 
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <h2>
-      {{user.displayName}}
-    </h2>
+    <h4>
+     Welcome: {{user.displayName}}
+    </h4>
     <img 
     style="height: 100px ;display: block"    
     [src]="user.photoURL || 'https://t4.ftcdn.net/jpg/01/18/03/35/160_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'" alt="">
