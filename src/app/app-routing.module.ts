@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 
 import { AngularFirestore} from "@angular/fire/firestore";
 import { AngularFireAuth} from "@angular/fire/auth";
+import { AngularFireStorage } from "@angular/fire/storage";
 
 import { AuthGuard } from './core/auth.guard';
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   providers:[
     AngularFirestore,
     AuthGuard,
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFireStorage
   ],
   exports: [RouterModule],
   declarations: [
