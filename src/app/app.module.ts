@@ -13,6 +13,7 @@ import {environment} from'../environments/environment';
 
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { UserProfileComponent } from "./user/user-profile/user-profile.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserProfileComponent } from "./user/user-profile/user-profile.component
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
