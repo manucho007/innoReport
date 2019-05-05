@@ -15,12 +15,13 @@ import { AngularFireAuth} from "@angular/fire/auth";
 import { AngularFireStorage } from "@angular/fire/storage";
 
 import { AuthGuard } from './core/auth.guard';
+import { DownloadUrlPipe } from './core/download-url.pipe';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'report-create', component: ReportCreateComponent,canActivate:[AuthGuard] },
   { path: 'report-list', component: ReportListComponent,canActivate:[AuthGuard] },
-  { path: 'report-view', component: ReportViewComponent,canActivate:[AuthGuard] },
+  { path: 'report-view/:id', component: ReportViewComponent,canActivate:[AuthGuard] },
 ];
 
 @NgModule({
@@ -42,7 +43,8 @@ const routes: Routes = [
     ReportListComponent, 
     ReportViewComponent, 
     HomeComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    DownloadUrlPipe
   ]
 })
 export class AppRoutingModule { }

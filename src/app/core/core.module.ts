@@ -7,6 +7,7 @@ import { FirestoreService } from './firestore.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { DownloadUrlPipe } from './download-url.pipe';
 
 @NgModule({
   declarations: [],
