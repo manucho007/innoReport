@@ -2,7 +2,7 @@
   "name": "innoReport",
   "short_name": "innoReport",
   "theme_color": "#2C3E50",
-  "background_color": "#595f87",
+  "background_color": "#2C3E50",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
