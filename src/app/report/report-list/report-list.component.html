@@ -1,10 +1,24 @@
 <div class="container">
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+
     <div class="list-group" *ngFor="let report of reports |async">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{report.title}}</h5>
+          <small>{{report.status}}</small>
+        </div>
+        <p class="mb-1">{{report.description}}</p>
+        <small>Donec id elit non mi porta.</small>
+      </a>
+      <hr>
+    </div>
+
+
+    <!-- <div class="list-group" *ngFor="let report of reports |async">
       <div class="media text-muted pt-3">
         <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom "> <!-- border-gray -->
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom ">
           <strong class="d-block text-gray-dark">@username</strong>
           <a href="#" class="list-group-item list-group-item-action">
             {{report.title}}
@@ -12,13 +26,11 @@
           <span class="badge badge-secondary">City residents well being</span>
         </p>
       </div>
-    </div>
+    </div> -->
+
+
   </div>
   <small class="d-block text-right mt-3">
     <a href="#">All updates</a>
   </small>
 </div>
-
-
-
-
