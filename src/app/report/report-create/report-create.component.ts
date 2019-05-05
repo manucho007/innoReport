@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 let imagePathDB;
+let inputTags:any[];
 @Component({
   selector: 'report-create',
   templateUrl: './report-create.component.html',
@@ -20,14 +21,25 @@ export class ReportCreateComponent implements OnInit {
     title: "",
     description: "",
     imagePath:"",
-    status: false
+    status: false,
+    tags:[]
   }
   constructor(
     private db: FirestoreService,
     private storage: AngularFireStorage
   ) { }
+  // const tagss: string[]
+  tagss=[
+    'government',
+    'city',
+    'education',
+    'well-being',
+    'heatlh'
+  ];
 
   ngOnInit() {
+    console.log(this.tagss);
+    
   }
 
   uploadFile(event) {
@@ -58,13 +70,13 @@ export class ReportCreateComponent implements OnInit {
   }
 
   createRequest() {
-    this.report.imagePath = imagePathDB;
+    this.report.imagePath = imagePathDB || "no image";
+    this.report.tags= this.tagss;
     console.log(this.report);
     
     this.db.add('requests', this.report);
-    this.report.title = "";
-    this.report.description = "";
-
+    // this.report.title = "";
+    // this.report.description = "";
   }
 
 }
