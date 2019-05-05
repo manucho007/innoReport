@@ -1,3 +1,9 @@
-<p>
-  view works!
-</p>
+<button type="button" class="btn btn-secondary" routerLink="/report-list">Back</button>
+<div class="jumbotron" *ngIf="reportDoc |async as report">
+  <h1 class="display-3">{{report.title}}</h1>
+  <p class="lead">{{report.description}}</p>
+  <hr class="my-4">
+  <p>Category: {{report.category}}</p>
+  <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
+  <span class="badge badge-danger">Status: {{report.status}}</span>
+</div>  
