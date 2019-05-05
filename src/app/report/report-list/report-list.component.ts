@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Report } from "../../interfaces/report";
 import { FirestoreService  } from "../../core/firestore.service";
 import { Observable } from "rxjs";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'report-list',
@@ -11,10 +12,14 @@ import { Observable } from "rxjs";
 export class ReportListComponent implements OnInit {
 
   reports: Observable<Report[]>;
-  constructor(public db: FirestoreService) { }
+  constructor(public db: FirestoreService,
+    private router:Router) { }
 
   ngOnInit() {
-    this.reports = this.db.col$('requests');
+    this.reports = this.db.colWithIds$('requests')
   }
 
+  viewReport(id){
+    this.router.navigate(['/report-view',id]);
+  }
 }
