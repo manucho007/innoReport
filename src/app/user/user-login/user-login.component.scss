@@ -29,3 +29,9 @@
 .btn, #inputPassword {
   margin-bottom: 16px
 }
+
+.buttons::after {
+  display: block;
+  clear: both;
+  content: "";
+}

@@ -1,31 +1,29 @@
-<div class="container">
-  <div *ngIf="auth.user | async; then authenticated else guest">
-    <!-- template will replace this div -->
-  </div>
+
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
 </div>
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-  <div class="container">
-    <h3>Welcome</h3>
-    <p class="card-text">Please Login</p>
-    <button class="button" routerLink="/login">Login</button>
-  </div>
+  <a class="btn btn-light"href="/login">Sign up</a>
 </ng-template>
 
 
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <div class="d-flex align-items-center user">
+    <div class="d-flex align-items-center">
       <img 
         class="rounded-circle user-photo"
         height="50"
         width="50"
         [src]="user.photoURL || 'https://t4.ftcdn.net/jpg/01/18/03/35/160_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'" 
         alt="">
-      <h4 class="name">{{user.displayName}}</h4>
+      <div class="nav-item dropdown">
+        <a class="dropdown-toggle text-light" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.displayName}}</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </div>
     </div>
-    <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
   </div>
 </ng-template>
-
