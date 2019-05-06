@@ -14,23 +14,23 @@
       </div>
 
       <h5>Select the selected areas for your request</h5>
-      <fieldset class="form-group" *ngFor="let tg of tagss; let i =index">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" name='{{tg}}' type="checkbox" value="{{tg}}" unchecked="">
-            {{tg}}
-          </label>
+      <fieldset class="form-group" >
+        <div class="form-check form-check-inline" *ngFor="let tg of tagss; let i =index">
+          <input class="form-check-input" name='{{tg}}' type="checkbox" value="{{tg}}" unchecked="">
+          <label class="form-check-label">{{tg}}</label>
         </div>
       </fieldset>
-
+      
       <div class="form-group">
         <label for="exampleInputFile">Upload an Image</label>
         <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"
           (change)="uploadFile($event.target.files)">
-        <small id="fileHelp" class="form-text text-muted">Upload any image that might help resolve this issue
-          faster</small>
+        <small id="fileHelp" class="form-text text-muted">
+          Upload any image that might help resolve this issuefaster
+        </small>
       </div>
-      <div class="container" *ngIf="percentageUpload | async as pct">
+      <!-- <div class="container" *ngIf="percentageUpload | async as pct"> -->
+      <div class="progress-line" *ngIf="percentageUpload | async as pct">
         <h6 *ngIf="pct===100">Image Uploaded: {{pct | number}} %</h6>
         <h6 *ngIf="pct!=100">Uploading image:{{pct | number}} %</h6>
         <div class="progress">
@@ -38,9 +38,9 @@
             [attr.aria-valuenow]="pct" aria-valuemin="0" aria-valuemax="100" [style.width]="pct + '%'"></div>
         </div>
       </div>
-      <br>
-      <br>
-      <button type="button" class="btn btn-primary" (click)="createRequest()">Create</button>
+      <!-- <br>
+      <br> -->
+      <button type="button" class="btn btn-primary btn-block" (click)="createRequest()">Create</button>
     </fieldset>
   </form>
 </div>

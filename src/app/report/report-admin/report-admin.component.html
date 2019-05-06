@@ -1,28 +1,50 @@
 <div class="container">
-  <div class="list-group" *ngFor="let report of reportList |async">
-    <a class="list-group-item list-group-item-action flex-column align-items-start" (click)="viewReport(report.id)">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{report.title}}</h5>
-        <small *ngIf="report.status === 'received'">Received</small>
-        <small *ngIf="report.status === 'inProgress'">In Progress</small>
-        <small *ngIf="report.status === 'aproved'">Aproved</small>
-        <small *ngIf="report.status === 'rejected'">Rejected</small>
+  <div class="row">
+  <div class="col-md-6" *ngFor="let report of reportList |async">
+    <!-- <div class="col-md-4"> -->
+      <div class="card mb-4 shadow-sm">
+        <img class="mx-auto d-block" *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="" height="200">
+        <div class="card-body">
+
+          <!-- <p class="card-text"> -->
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{report.title}}</h5>
+                <span *ngIf="report.status === 'received'" class="badge badge-warning align-self-start">Received</span>
+                <small *ngIf="report.status === 'inProgress'" class="badge badge-info align-self-start">In Progress</small>
+                <small *ngIf="report.status === 'aproved'" class="badge badge-success align-self-start">Aproved</small>
+                <small *ngIf="report.status === 'rejected'" class="badge badge-danger align-self-start">Rejected</small>
+              </div>
+              <p class="card-text"><small class="text-muted">Category: {{report.category}}</small></p>
+              <p class="mb-1">{{report.description}}</p>
+
+          <!-- </p> -->
+            <div class="form-group">
+              <select class="custom-select" [(ngModel)]="report.status">
+                <option value="received">Received</option>
+                <option value="rejected">Rejected</option>
+                <option value="aproved">Aproved</option>
+                <option value="inProgress">inProgress</option>
+              </select>
+            </div>
+            <button (click)="updateReport(report.id, report.status)" class="btn btn-block btn-primary">Save</button>
+        </div>
       </div>
-      <p class="mb-1">{{report.description}}</p>
-      <small>Category: {{report.category}}</small>
-    </a>
-    <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="" height="75" width="75">
-    <br>
-    <div class="form-group">
-      <select class="custom-select" [(ngModel)]="report.status">
-        <!-- <option selected="">Open this select menu</option> -->
-        <option value="received">Received</option>
-        <option value="rejected">Rejected</option>
-        <option value="aproved">Aproved</option>
-        <option value="inProgress">inProgress</option>
-      </select>
-    </div>
-    <button (click)="updateReport(report.id, report.status)" class="btn btn-info">Save</button>
-    <hr>
+    <!-- </div> -->
+  </div>
   </div>
 </div>
+
+
+   <!-- 
+<a class="list-group-item list-group-item-action flex-column align-items-start" (click)="viewReport(report.id)">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{report.title}}</h5>
+    <small *ngIf="report.status === 'received'">Received</small>
+    <small *ngIf="report.status === 'inProgress'">In Progress</small>
+    <small *ngIf="report.status === 'aproved'">Aproved</small>
+    <small *ngIf="report.status === 'rejected'">Rejected</small>
+  </div>
+  <p class="mb-1">{{report.description}}</p>
+  <small>Category: {{report.category}}</small>
+</a>
+-->

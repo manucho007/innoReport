@@ -1,3 +1,4 @@
+
 <div class="container text-center">
   <div *ngIf="!(auth.user | async); else alreadyLoggedIn"> 
     <form class="form-signin">
@@ -17,7 +18,7 @@
         </button>
     </form>
   </div>
-   
+
   <ng-template #alreadyLoggedIn>
     <p class="text-success">
       Login Succesful

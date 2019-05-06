@@ -1,12 +1,37 @@
-<button type="button" class="btn btn-secondary" routerLink="/report-list">Back</button>
-<div class="jumbotron" *ngIf="reportDoc |async as report">
-  <h1 class="display-3">{{report.title}}</h1>
-  <p class="lead">{{report.description}}</p>
-  <hr class="my-4">
-  <p>Category: {{report.category}}</p>
-  <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
-  <span *ngIf="report.status === 'rejected'" class="badge badge-danger">Rejected</span>
-  <span *ngIf="report.status === 'aproved'" class="badge badge-success">Aproved</span>
-  <span *ngIf="report.status === 'received'" class="badge badge-secondary">Received</span>
-  <span *ngIf="report.status === 'inProgress'" class="badge badge-info">In Progress</span>
-</div>  
+<div class="container">
+  <button class="btn btn-secondary" routerLink="/report-list">
+    <i class="fa fa-close"></i> Close
+  </button>
+  <div class="" *ngIf="reportDoc |async as report">
+    <div class="card">
+        <div class="card-body">
+          <!-- <h5 class="display-5">{{report.title}}</h5> -->
+          <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{report.title}}</h5>
+              <span *ngIf="report.status === 'received'" class="badge badge-warning align-self-start">Received</span>
+              <small *ngIf="report.status === 'inProgress'" class="badge badge-info align-self-start">In Progress</small>
+              <small *ngIf="report.status === 'aproved'" class="badge badge-success align-self-start">Aproved</small>
+              <small *ngIf="report.status === 'rejected'" class="badge badge-danger align-self-start">Rejected</small>
+            </div>
+          <p class="card-text"><small class="text-muted">Category: {{report.category}}</small></p>
+          <p class="lead">{{report.description}}</p>
+          <span *ngIf="report.status === 'rejected'" class="badge badge-danger">Rejected</span>
+          <span *ngIf="report.status === 'aproved'" class="badge badge-success">Aproved</span>
+          <span *ngIf="report.status === 'received'" class="badge badge-secondary">Received</span>
+          <span *ngIf="report.status === 'inProgress'" class="badge badge-info">In Progress</span>
+        </div>
+        <!-- <div class=""> -->
+          <img class="mx-auto d-block" *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
+        <!-- </div> -->
+        
+      </div>
+  </div>  
+  <!-- <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
+  </div> -->
+</div>
