@@ -3,7 +3,7 @@ export interface Report {
     description: string;
     imagePath?: string;
     tags?: string[];
-    status?: boolean;
+    status?: string;
     category?:string;
 
 }

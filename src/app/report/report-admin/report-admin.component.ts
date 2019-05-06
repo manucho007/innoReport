@@ -15,9 +15,10 @@ export class ReportAdminComponent implements OnInit {
 
   ngOnInit() {
     // this.reportList = this.db.colWithIds$("requests", ref => ref.where("category is", "==", "A") )
+    // Retrieves the collection with id values from firestore
     this.reportList = this.db.colWithIds$('requests');
   }
-
+  // Function updates the satus of the request
   updateReport(reportid, reportstatus){
     reportstatus
     this.db.update(`requests/${reportid}`,{status:reportstatus})

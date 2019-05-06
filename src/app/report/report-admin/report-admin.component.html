@@ -3,25 +3,26 @@
     <a class="list-group-item list-group-item-action flex-column align-items-start" (click)="viewReport(report.id)">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{report.title}}</h5>
-        <small *ngIf="!report.status">Pending</small>
-        <small *ngIf="report.status" >Aproved</small>
+        <small *ngIf="report.status === 'received'">Received</small>
+        <small *ngIf="report.status === 'inProgress'">In Progress</small>
+        <small *ngIf="report.status === 'aproved'">Aproved</small>
+        <small *ngIf="report.status === 'rejected'">Rejected</small>
       </div>
       <p class="mb-1">{{report.description}}</p>
       <small>Category: {{report.category}}</small>
     </a>
-    <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt=""
-    height="75"
-    width="75"
-    >
+    <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="" height="75" width="75">
     <br>
     <div class="form-group">
       <select class="custom-select" [(ngModel)]="report.status">
         <!-- <option selected="">Open this select menu</option> -->
-        <option [ngValue]="false">Pending</option>
-        <option [ngValue]="true">Aproved</option>
+        <option value="received">Received</option>
+        <option value="rejected">Rejected</option>
+        <option value="aproved">Aproved</option>
+        <option value="inProgress">inProgress</option>
       </select>
     </div>
-    <button (click)="updateReport(report.id, report.status)"  class="btn btn-info" >Save</button>
+    <button (click)="updateReport(report.id, report.status)" class="btn btn-info">Save</button>
     <hr>
   </div>
 </div>
