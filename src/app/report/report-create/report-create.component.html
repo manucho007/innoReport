@@ -30,15 +30,14 @@
         <small id="fileHelp" class="form-text text-muted">Upload any image that might help resolve this issue
           faster</small>
       </div>
-
       <div class="container" *ngIf="percentageUpload | async as pct">
-        <h4>Uploading image</h4>{{pct | number}}
+        <h6 *ngIf="pct===100">Image Uploaded: {{pct | number}} %</h6>
+        <h6 *ngIf="pct!=100">Uploading image:{{pct | number}} %</h6>
         <div class="progress">
           <div class="progress-bar progress-bar-striped progress-bar bg-success" role="progressbar"
             [attr.aria-valuenow]="pct" aria-valuemin="0" aria-valuemax="100" [style.width]="pct + '%'"></div>
         </div>
       </div>
-
       <br>
       <br>
       <button type="button" class="btn btn-primary" (click)="createRequest()">Create</button>

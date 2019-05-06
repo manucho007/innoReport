@@ -5,5 +5,8 @@
   <hr class="my-4">
   <p>Category: {{report.category}}</p>
   <img *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
-  <span class="badge badge-danger">Status: {{report.status}}</span>
+  <span *ngIf="report.status === 'rejected'" class="badge badge-danger">Rejected</span>
+  <span *ngIf="report.status === 'aproved'" class="badge badge-success">Aproved</span>
+  <span *ngIf="report.status === 'received'" class="badge badge-secondary">Received</span>
+  <span *ngIf="report.status === 'inProgress'" class="badge badge-info">In Progress</span>
 </div>  
