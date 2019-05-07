@@ -12,7 +12,7 @@
           <small *ngIf="report.status === 'rejected'" class="badge badge-danger align-self-start">Rejected</small>
         </div>
         <p class="mb-1">{{report.description}}</p>
-        <small>Category: {{report.category}}</small>
+        <small>Category: {{report.category.name}}</small>
       </a>
     </div>
   </div>

@@ -13,7 +13,7 @@
           [(ngModel)]="report.description"></textarea>
       </div>
 
-      <h5>Select the selected areas for your request</h5>
+      <h5>Select the areas for your request</h5>
       <fieldset class="form-group" >
         <div class="form-check form-check-inline" *ngFor="let tg of tagss; let i =index">
           <input class="form-check-input" name='{{tg}}' type="checkbox" value="{{tg}}" unchecked="">
