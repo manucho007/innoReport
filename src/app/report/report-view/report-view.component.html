@@ -15,13 +15,9 @@
             </div>
           <p class="card-text"><small class="text-muted">Category: {{report.category}}</small></p>
           <p class="lead">{{report.description}}</p>
-          <span *ngIf="report.status === 'rejected'" class="badge badge-danger">Rejected</span>
-          <span *ngIf="report.status === 'aproved'" class="badge badge-success">Aproved</span>
-          <span *ngIf="report.status === 'received'" class="badge badge-secondary">Received</span>
-          <span *ngIf="report.status === 'inProgress'" class="badge badge-info">In Progress</span>
         </div>
         <!-- <div class=""> -->
-          <img class="mx-auto d-block" *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
+          <img class="mx-auto d-block img-fluid" *ngIf="report.imagePath | downloadUrl |async as url " [src]="url" alt="">
         <!-- </div> -->
         
       </div>
