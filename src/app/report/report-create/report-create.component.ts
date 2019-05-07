@@ -33,7 +33,9 @@ export class ReportCreateComponent implements OnInit {
     'city',
     'education',
     'well-being',
-    'heatlh'
+    'heatlh',
+    'medical',
+    
   ];
 
   ngOnInit() {
