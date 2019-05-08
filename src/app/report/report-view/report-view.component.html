@@ -13,7 +13,7 @@
               <small *ngIf="report.status === 'aproved'" class="badge badge-success align-self-start">Aproved</small>
               <small *ngIf="report.status === 'rejected'" class="badge badge-danger align-self-start">Rejected</small>
             </div>
-          <p class="card-text"><small class="text-muted">Category: {{report.category}}</small></p>
+          <p class="card-text"><small class="text-muted">Category: {{report.category.name}}</small></p>
           <p class="lead">{{report.description}}</p>
         </div>
         <!-- <div class=""> -->
