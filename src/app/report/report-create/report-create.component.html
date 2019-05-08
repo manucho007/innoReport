@@ -5,12 +5,13 @@
       <div class="form-group">
         <label class="col-form-label" for="title">Title of the request </label>
         <input type="text" name="title" class="form-control" placeholder="Write a title for the request" id="title"
-          [(ngModel)]="report.title">
+          [(ngModel)]="report.title"
+          maxlength="50">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
         <textarea name="description" class="form-control" id="description" rows="3"
-          [(ngModel)]="report.description"></textarea>
+          [(ngModel)]="report.description" maxlength="600"></textarea>
       </div>
 
       <h5>Select the areas for your request</h5>
@@ -26,7 +27,7 @@
         <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"
           (change)="uploadFile($event.target.files)">
         <small id="fileHelp" class="form-text text-muted">
-          Upload any image that might help resolve this issuefaster
+          Upload any image that might help resolve this issue faster
         </small>
       </div>
       <!-- <div class="container" *ngIf="percentageUpload | async as pct"> -->

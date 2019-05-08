@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ReportListComponent implements OnInit {
 
   reports: Observable<Report[]>;
+  reportList: Observable<Report[]>;
   constructor(public db: FirestoreService,
     private router:Router) { }
 
@@ -19,6 +20,13 @@ export class ReportListComponent implements OnInit {
     this.reports = this.db.colWithIds$('requests')
   }
 
+  orderBy(name){
+    console.log(name);
+    this.reports = this.db.colWithIds$("requests", ref => ref.where("category.name", "==", `${name}`) )
+  }
+  entireList(){
+    this.reports = this.db.colWithIds$('requests')
+  }
   viewReport(id){
     this.router.navigate(['/report-view',id]);
   }
