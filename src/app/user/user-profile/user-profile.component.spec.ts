@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserProfileComponent } from './user-profile.component';
+import { MockAuthService } from '../../service-mocks/mock-auth.service';
+import { AuthService } from '../../core/auth.service';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
@@ -8,7 +10,9 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
+      declarations: [ UserProfileComponent ],
+      providers: [
+      {provide: AuthService, useValue: MockAuthService}]
     })
     .compileComponents();
   }));
