@@ -39,7 +39,7 @@ export class ReportCreateComponent implements OnInit {
   ];
 
   ngOnInit() {
-    console.log(this.tagss);
+    // console.log(this.tagss);
 
   }
 
