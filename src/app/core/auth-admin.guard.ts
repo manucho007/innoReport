@@ -19,8 +19,8 @@ export class AuthAdminGuard implements CanActivate {
           map(user => !!(user && user.isAdmin == true)),
           tap(loggedIn => {
             if (!loggedIn) {
-              console.log('access denied')
-              this.router.navigate(['/login']);
+              alert('Access denied')
+              // this.router.navigate(['/login']);
             }
           }))
     }
