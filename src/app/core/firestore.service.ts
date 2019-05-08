@@ -63,6 +63,12 @@ export class FirestoreService {
       updatedAt: this.timestamp
     })
   }
+  
+  // Custom function to delete a collection
+  delete<T>(ref: DocPredicate<T>) {
+    this.doc(ref).delete();
+  }
+
   // custom set method with manual ID
   set<T>(ref: DocPredicate<T>, data: any) {
     const timestamp = this.timestamp

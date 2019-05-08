@@ -9,9 +9,9 @@ import { Report } from 'src/app/interfaces/report';
   styleUrls: ['./report-admin.component.scss']
 })
 export class ReportAdminComponent implements OnInit {
-  reportDoc:Observable<Report>;
-  reportList:Observable<Report[]>
-  constructor(public db:FirestoreService) { }
+  reportDoc: Observable<Report>;
+  reportList: Observable<Report[]>
+  constructor(public db: FirestoreService) { }
 
   ngOnInit() {
     // this.reportList = this.db.colWithIds$("requests", ref => ref.where("category is", "==", "A") )
@@ -19,9 +19,13 @@ export class ReportAdminComponent implements OnInit {
     this.reportList = this.db.colWithIds$('requests');
   }
   // Function updates the satus of the request
-  updateReport(reportid, reportstatus){
+  updateReport(reportid, reportstatus) {
     reportstatus
-    this.db.update(`requests/${reportid}`,{status:reportstatus})
+    this.db.update(`requests/${reportid}`, { status: reportstatus })
   }
 
+  deleteDoc(reportid) {
+    confirm('Do you want to delete this request?')
+    this.db.delete(`requests/${reportid}`);
+  }
 }
